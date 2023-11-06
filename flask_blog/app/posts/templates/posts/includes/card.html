@@ -1,0 +1,25 @@
+<div class="col-sm-4 mb-3">
+    <div class="card mb-4">
+      <div class="card-header">
+        {{ post.created.strftime('%d %b %Y') }}
+      </div>
+      {% if post.filepath %}
+      <img src="{{ url_for('static', filename=post.filepath) }}" class="card-img-top" alt="...">
+      {% else %}
+      <img src="{{ url_for('static', filename='JPG-File.png') }}" class="card-img-top" alt="...">
+      {% endif %}
+      <div class="card-body">
+        <a href="{{ url_for('posts.post_details', slug=post.slug) }}" > <h5 class="card-title">{{ post.title }}</h5></a>
+        <p class="card-text">{{ post.body }}</p>
+        <a href="{{ url_for('posts.post_details', slug=post.slug) }}" class="btn btn-light">Read more ...</a>
+        <br>
+        {% if post.tags.count() %}
+        <div class="card-footer bg-transparent" style="border-top:none;">
+          {% for tag in post.tags %}
+          <a href=" {{ url_for('posts.tag_details', slug=tag.slug)}} "> <span class="badge text-bg-primary"> {{ tag.title }} </span></a>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+</div>

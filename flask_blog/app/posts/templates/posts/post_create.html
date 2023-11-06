@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+
+{% block title %}
+    <h3>New Post</h3>
+{% endblock title %}
+    
+{% block contents %}
+<h3>Create New Post</h3>
+
+<form action="{{ url_for('posts.post_create') }}" method="POST" enctype="multipart/form-data">
+
+    {% for field in form %}
+    <div class="form-group">
+   {{ field.label() }}
+   {% if field.type == 'TextAreaField' %}
+   {{ field(class='form-control', style="height: 300px") }}
+   {% else %}
+   {{ field(class='form-control') }}
+   {% endif %}
+   <br>
+    </div>
+    {% endfor %}
+    <button class="btn btn-primary">submit</button>
+</form>
+
+{% endblock contents %}

@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    {{ postdetail.title }}
+{% endblock title %}
+
+
+{% block contents %}
+<h1>{{ postdetail.title }}</h1>
+<hr>
+<div  style="display: flex; justify-content: center; align-items: center;">
+<div class="col-sm-12">
+        <div class="card ">
+<img src="{{ url_for('static', filename=postdetail.filepath) }}" class="card-img-top" style="width: 850px; 
+height: 350px" alt="...">
+        </div>
+        </div>
+        </div>
+<br>
+
+<div class="">
+    {{ postdetail.body }}
+</div>
+    
+{% endblock contents %}
+    

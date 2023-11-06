@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Post contents
+{% endblock title %}
+
+{% block contents %}
+<h1>Post List</h1>
+<hr>
+<br>
+{% set i = 0 %}
+  <div class="row">
+    {% for post in postlist %}
+    {% include 'posts/includes/card.html' %}
+    {% endfor %}
+    {% if i % 3 == 2 %}
+  </div>
+  <div class="row">
+  {% endif %}
+  {% set i = i + 1 %}
+  </div>
+{% endblock contents %}
