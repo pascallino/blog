@@ -6,20 +6,28 @@
 
 
 {% block contents %}
-<h1>{{ postdetail.title }}</h1>
+<div style="text-align: center;">
+    <h4>{{ postdetail.title }}</h4>
+    {{ postdetail.created.strftime('%B %d, %Y') }}
+</div>
 <hr>
 <div  style="display: flex; justify-content: center; align-items: center;">
 <div class="col-sm-12">
         <div class="card ">
+            {% if postdetail.filepath %}
 <img src="{{ url_for('static', filename=postdetail.filepath) }}" class="card-img-top" style="width: 850px; 
-height: 350px" alt="...">
+height: 350px; object-fit: cover;" alt="...">
+{% else %}
+<img src="{{ url_for('static', filename='JPG-File.png') }}" class="card-img-top" style="width: 850px; 
+height: 400px; object-fit: cover;" alt="...">
+{% endif %}
         </div>
         </div>
         </div>
 <br>
 
 <div class="">
-    {{ postdetail.body }}
+ <span style="font-size: 20px;">{{ postdetail.body | safe }}</span>
 </div>
     
 {% endblock contents %}

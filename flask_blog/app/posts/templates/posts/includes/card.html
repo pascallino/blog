@@ -4,13 +4,15 @@
         {{ post.created.strftime('%d %b %Y') }}
       </div>
       {% if post.filepath %}
-      <img src="{{ url_for('static', filename=post.filepath) }}" class="card-img-top" alt="...">
+      <a href="{{ url_for('posts.post_details', slug=post.slug) }}"><img src="{{ url_for('static', filename=post.filepath) }}" class="card-img-top" alt="...">
+      </a> 
       {% else %}
-      <img src="{{ url_for('static', filename='JPG-File.png') }}" class="card-img-top" alt="...">
-      {% endif %}
+      <a href="{{ url_for('posts.post_details', slug=post.slug) }}"><img src="{{ url_for('static', filename='JPG-File.png') }}" class="card-img-top" alt="...">
+      </a>
+        {% endif %}
       <div class="card-body">
         <a href="{{ url_for('posts.post_details', slug=post.slug) }}" > <h5 class="card-title">{{ post.title }}</h5></a>
-        <p class="card-text">{{ post.body }}</p>
+        <p class="card-text">{{ post.body | safe }}</p>
         <a href="{{ url_for('posts.post_details', slug=post.slug) }}" class="btn btn-light">Read more ...</a>
         <br>
         {% if post.tags.count() %}

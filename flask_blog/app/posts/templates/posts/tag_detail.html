@@ -1,12 +1,12 @@
 {% extends 'layout.html' %}
 
 {% block title %}
-    Post with {{ tags.title }} tag
+  <h4 >Post with {{ tags.title }} tag</h4> 
 {% endblock title %}
 
 
 {% block contents %}
-<h1>Tag List</h1>
+<h1>{{ tags.title }} Blogs</h1>
 <hr>
 <br>
   {% set i = 0 %}

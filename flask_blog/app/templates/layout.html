@@ -9,18 +9,38 @@
       <title>{% block title %}
             
         {% endblock title %}</title>
+        <style>
+          body {
+              margin: 0;
+              padding: 0;
+          }
+  
+          .navbar {
+              position: fixed;
+              top: 0;
+              width: 100%;
+              z-index: 500;
+          }
+  
+          div.container {
+              padding-top: 80px; /* Adjust as needed based on the height of your navbar */
+          }
+  
+          /* Add your custom styles here */
+      </style>
+      <script src="https://cdn.ckeditor.com/4.22.1/full/ckeditor.js"></script>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg  navbar-dark bg-dark  mb-5">
             <div class="container-fluid">
-              <a class="navbar-brand" href="{{ url_for('index') }}">Scrpytex</a>
+              <a class="navbar-brand" href="{{ url_for('index') }}">MyBlogtex</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ url_for('posts.post_list') }}">Blog</a>
+                    <a class="nav-link active" aria-current="page" href="{{ url_for('posts.post_list') }}">Blogs</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('posts.post_create') }}">Create Post</a>
@@ -44,6 +64,5 @@
         </div>
           </div>
         </div>
-    
     </body>
 </html>
