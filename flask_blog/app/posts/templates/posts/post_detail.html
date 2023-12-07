@@ -8,7 +8,12 @@
 {% block contents %}
 <div style="text-align: center;">
     <h4>{{ postdetail.title }}</h4>
-    {{ postdetail.created.strftime('%B %d, %Y') }}
+    {% if postdetail.created %} 
+  {{  postdetail.created.strftime('%B %d, %Y') }}
+    {% endif %}  
+
+
+    
 </div>
 <hr>
 <div  style="display: flex; justify-content: center; align-items: center;">
@@ -16,10 +21,10 @@
         <div class="card ">
             {% if postdetail.filepath %}
 <img src="{{ url_for('static', filename=postdetail.filepath) }}" class="card-img-top" style="width: 850px; 
-height: 350px; object-fit: cover;" alt="...">
+height: 300px; object-fit: fill;" alt="...">
 {% else %}
 <img src="{{ url_for('static', filename='JPG-File.png') }}" class="card-img-top" style="width: 850px; 
-height: 400px; object-fit: cover;" alt="...">
+height: 400px; object-fit: fill;" alt="...">
 {% endif %}
         </div>
         </div>
