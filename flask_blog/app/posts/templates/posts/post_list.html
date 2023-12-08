@@ -5,11 +5,46 @@
 {% endblock title %}
 
 {% block contents %}
-{% if pages.items %}
+<!-- {% if pages.items %}
 <h4>{{ current_user.first_name }} Blog(s)</h4>
 {% else %}
 <h4> {{ current_user.first_name }} you have no Blog(s) </h4>
-{% endif %}
+{% endif %} -->
+<div class="user-profile">
+  <div class="profile-image">
+      <img class="rounded-image" src="/static/JPG-File.png" alt="Rounded Image">
+  </div>
+  <div class="profile-details">
+      <h5> {{current_user.first_name }} {{current_user.last_name }} </h5>
+      <p>Email: {{ current_user.email }}<br>
+      Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <div class="link-container">
+      <a href="#" title="facebook account" class="facebook">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="#" title="instagram account" class="instagram">
+      <i class="fab fa-instagram"></i>
+  </a>
+  <a href="#" title="twitter" class="twitter">
+    <i class="fab fa-twitter"></i>
+</a>
+<a href="#" title="linkedin account" class="linkedin">
+  <i class="fab fa-linkedin"></i>
+</a>
+<a href="#" title="gitup account" class="gitup">
+  <i class="fab fa-github"></i>
+</a>
+<a href="#" title="youtube account" class="youtube">
+  <i class="fab fa-youtube"></i>
+</a>
+<a href="#" title="website" class="website">
+  <i class="fas fa-globe"></i>
+</a>
+</div>
+
+    </div>
+</div>
+
 <hr>
 {% set i = 0 %}
   <div class="row">

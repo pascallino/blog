@@ -41,7 +41,7 @@ def login_post():
 
 @posts.route('/signup')
 def signup():
-    return render_template('signup.html')
+    return render_template('posts/signup.html')
 
 @posts.route('/signup', methods=['POST'])
 def signup_post():
@@ -66,6 +66,15 @@ def signup_post():
 def dashboard(userid):
     return redirect(url_for("posts.authenticated", userid=userid))
 
+@posts.route('/profile/<userid>/')
+@login_required
+def profile(userid):
+    return render_template("posts/profile.html")
+
+@posts.route('/profile/', methods=['POST'])
+@login_required
+def profile_post():
+    pass
 
 @posts.route('/logout')
 @login_required

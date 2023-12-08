@@ -41,6 +41,13 @@ class User(UserMixin, db.Model):
     active = db.Column(db.Boolean(), default=True)
     created = db.Column(db.DateTime, default=datetime.now())
     fs_uniquifier = db.Column(db.String(64), unique=True)
+    website = db.Column(db.String(1000), nullable=True)
+    gitup = db.Column(db.String(1000), nullable=True)
+    facebook = db.Column(db.String(1000), nullable=True)
+    instagram = db.Column(db.String(1000), nullable=True)
+    youtube = db.Column(db.String(1000), nullable=True)
+    twitter = db.Column(db.String(1000), nullable=True)
+    linkedin = db.Column(db.String(1000), nullable=True)
     posts = db.relationship("Post", backref=db.backref('users'), cascade="delete")
     roles = db.relationship("Role", secondary="roles_users", backref=db.backref('users'), 
                             lazy='joined')
