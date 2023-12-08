@@ -1,0 +1,255 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #000;
+}
+
+/* Hidden Items */
+
+.main-container nav .menu-button,
+.mobile-menu-items {
+  display: none;
+}
+
+.main-container {
+  font-family: "Roboto", sans-serif;
+  height: 100vh;
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  padding: 32px;
+  color: #fff;
+  z-index: 2;
+  background: #000;
+  transition: all 400ms ease;
+
+  position: relative;
+}
+
+.main-container video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 0;
+}
+
+.main-container .bg-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background: #000;
+  opacity: 0.8;
+}
+
+.main-container nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-width: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 24px 32px;
+
+  opacity: 0;
+
+  animation: fadeIn 1000ms ease-in-out forwards;
+  animation-delay: 1000ms;
+}
+
+.main-container nav .logo a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 24px;
+}
+
+.main-container nav ul {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.main-container nav ul a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 15px;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.main-container nav ul a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 1px;
+  background: #fff;
+  transition: all 400ms ease;
+}
+
+.main-container nav ul a:hover::after {
+  width: 100%;
+}
+
+.main-container .hero-section {
+  position: relative;
+  z-index: 2;
+}
+
+.main-container .hero-section h1 {
+  font-family: "Sacramento", cursive;
+  font-size: 90px;
+  margin: 0;
+  transform: translateY(15px);
+  opacity: 0;
+
+  animation: fadeIn 1000ms ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.main-container .hero-section p {
+  font-size: 20px;
+  margin-top: -24px;
+  transform: translateY(15px);
+  opacity: 0;
+
+  animation: fadeIn 1000ms ease-in-out forwards;
+  animation-delay: 400ms;
+}
+
+.main-container .hero-section a.btn {
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  background: #d62828;
+  padding: 10px 32px;
+  border-left: 8px solid #f1faee;
+  font-size: 16px;
+  text-transform: uppercase;
+  transition: all 500ms ease;
+
+  opacity: 0;
+
+  animation: fadeIn 1000ms ease-in-out forwards;
+  animation-delay: 1000ms;
+}
+
+.main-container .hero-section a.btn:hover {
+  background: #a11b1b;
+}
+
+.main-container .social {
+  position: absolute;
+  bottom: 60px;
+  left: 0;
+  padding: 32px;
+
+  opacity: 0;
+
+  animation: fadeIn 500ms ease-in-out forwards;
+  animation-delay: 2000ms;
+}
+
+.main-container .social a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 30px;
+  margin: 0 16px;
+}
+
+.main-container .social a:first-child {
+  margin-left: 0;
+}
+
+@media (max-width: 600px) {
+  .main-container nav .menu-items {
+    display: none;
+  }
+
+  .main-container nav .menu-button {
+    display: block;
+    width: 30px;
+    height: 30px;
+    transition: all 400ms ease;
+  }
+
+  .main-container .hero-section h1 {
+    font-size: 60px;
+  }
+
+  .main-container .hero-section p {
+    font-size: 16px;
+    margin-top: -6px;
+  }
+
+  .main-container .hero-section a.btn {
+    font-size: 14px;
+  }
+
+  .main-container.active {
+    transform: translateX(-190px) rotateZ(-4deg) scale(1.1);
+  }
+
+  .main-container.active nav .menu-button {
+    opacity: 0;
+  }
+
+  .mobile-menu-items {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    width: 190px;
+    right: 0;
+    top: 0;
+    background: #131212;
+  }
+
+  .mobile-menu-items ul {
+    list-style: none;
+    padding-left: 60px;
+  }
+
+  .mobile-menu-items ul a {
+    text-decoration: none;
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    margin: 16px 0;
+    display: inline-block;
+  }
+
+  .mobile-menu-items .close-button {
+    position: fixed;
+    width: 32px;
+    height: 32px;
+    top: 24px;
+    right: 32px;
+    color: #fff;
+  }
+} 
+
+.hero-section p:nth-child(1){
+margin-top: 10px;
+
+}
+

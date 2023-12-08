@@ -2,10 +2,12 @@
     <div class="card mb-4">
       <div class="card-header">
         {{ post.created.strftime('%d %b %Y') }}
+        {% if current_user.is_authenticated %}
         <div style="float: right;">
           <a href="{{ url_for('posts.post_details', slug=post.slug, userid=post.user_id) }}/edit"title="Edit Blog" >
             <i class="fa-regular fa-pen-to-square"></i>
         </a></div>
+        {% endif %}
       </div>
       {% if post.filepath %}
       <a href="{{ url_for('posts.post_details', slug=post.slug, userid=post.user_id) }}"><img src="{{ url_for('static', filename=post.filepath) }}" class="card-img-top" style="object-fit: fill;" alt="...">
@@ -18,20 +20,20 @@
         <a href="{{ url_for('posts.post_details', slug=post.slug, userid=post.user_id) }}" > <h5 class="card-title">{{ post.title }}</h5></a>
         <p class="card-text">{{ post.body | replace('\n', '<br>') | truncate(5, end='...') | safe }}</p>
         <a href="{{ url_for('posts.post_details', slug=post.slug, userid=post.user_id) }}" class="btn btn-light">Read more</a>
-              <a href="https://www.facebook.com/sharer/sharer.php?u=http://52.91.148.97:5005/blog/{{ post.slug}}/{{ post.user_id}}/" class="facebook">
+              <a href="https://www.facebook.com/sharer/sharer.php?u=http://52.91.148.97:5005/blog/{{ post.slug }}/{{ post.user_id}}" class="facebook">
                   <i class="fab fa-facebook-f"></i>
               </a>&nbsp;
-              <a href="#" class="instagram">
+              <!-- <a href="#" class="instagram">
                 <i class="fab fa-instagram"></i>
-            </a>&nbsp;
+            </a>&nbsp; -->
             <a href="#" class="twitter">
               <i class="fab fa-twitter"></i>
           </a>&nbsp; 
-          <a href="https://api.whatsapp.com/send?text=http://52.91.148.97:5003/2-hbnb" class="whatsapp">
+          <a href="https://api.whatsapp.com/send?text=http://52.91.148.97:5005/blog/{{ post.slug }}/{{ post.user_id }}" class="whatsapp">
             <i class="fab fa-whatsapp"></i>
         </a>
          &nbsp;
-          <a href="#" class="linkedin">
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=http://52.91.148.97:5005/blog/{{ post.slug }}/{{ post.user_id }}" class="linkedin">
             <i class="fab fa-linkedin"></i>
         </a>
 

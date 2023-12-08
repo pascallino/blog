@@ -37,7 +37,7 @@
         {% endif %}
         {% endwith%}
 
-        <h2 class="text-center">Log in</h2>
+        <h2 class="text-center">MyBlogText</h2>
         <hr>
         <form action="{{url_for('posts.login_post')}}" method="POST" >
             <div class="form-group">
@@ -53,9 +53,12 @@
                 <label for="remember">
                     <input type="checkbox" name="remember" id="remember"/>
                     Remember me</label>
-                </div>
+               </div><div  style="float: left;">
+                    <a href="{{ url_for('index') }}" class="btn btn-light btn-sm">Back to Home</a>
 
-            <button type="submit" class="btn btn-primary btn-block">Login</button>
+                </div> 
+<div  style="text-align: right;"">
+            <button type="submit"  class="btn btn-primary">Login</button></div> 
         </form>
     </div>
 

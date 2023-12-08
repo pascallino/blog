@@ -1,65 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Page Title</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&family=Sacramento&display=swap"
+      rel="stylesheet"
+    />
 
-        header {
-            background-color: #333;
-            padding: 10px;
-            text-align: center;
-        }
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #555;
-            padding: 10px;
-        }
+    <link rel="stylesheet" href="/static/styles/style.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <video autoplay loop muted>
+        <source src="videos/bg.mp4" type="video/mp4" />
+      </video>
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 18px;
-        }
+      <div class="bg-overlay"></div>
 
-        nav a:hover {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>MyBlogText.com</h1>
-    </header>
-    
-    <nav>
+      <nav>
+        <div class="logo">
+          <a href="#">MyBlogText</a>
+        </div>
+
+        <!-- <ul class="menu-items">
+          <li>
+            <a href="#">DASHBOARD</a>
+          </li>
+
+          <li>
+            <a href="#">SIGN UP</a>
+          </li>
+          
+          <li>
+            <a href="#">LOG IN</a>
+          </li>
+          <li>
+
+            <a href="#">LOG OUT</a>
+          </li>
+        </ul> -->
+        <ul class="menu-items">
         {% if not current_user.is_authenticated %}
+        <li>
         <a href="{{ url_for('posts.login') }}">Login</a>
+        </li>
         {% endif %}
         {% if current_user.is_authenticated %}
+        <li>
         <a href="{{ url_for('posts.post_list', userid=current_user.userid) }}">Dashboard</a>
+        </li>
         {% endif %}
         {% if not current_user.is_authenticated %}
+        <li>
         <a href="{{ url_for('posts.signup') }}">Signup</a>
+        </li>
         {% endif %}
+        
         {% if current_user.is_authenticated %}
-        <a href="{{ url_for('posts.logout') }}">Logout</a>
+        <li><a href="{{ url_for('posts.logout') }}">Logout</a>
+          </li>
         {% endif %}
-    </nav>
+      </ul>
+        <div class="menu-button">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 8h16M4 16h16"
+            />
+          </svg>
+        </div>
+      </nav>
 
-    <div>
-        <!-- Your page content goes here -->
-        <p>Welcome to Your Website!</p>
+      <header class="hero-section">
+        <h1>My Blogger Text</h1>
+        <article>
+
+        </article>
+        <br>
+       <br>
+        <p>Welcome to MyBlogText - Your Ultimate Blogging Platform </p>
+ <br>
+        <p>Elevate Your Writing Experience</p>
+<br>
+        <p>At MyBlogText, we believe that every voice deserves to be heard. Our platform is designed to empower everyone like you
+        to express your thoughts, share your stories, and connect with a global audience. Whether you're a seasoned writer or
+        just starting your writing journey, MyblogText provides the perfect space to showcase your creativity</p>
+<br>
+        <p>
+          Click below.
+        </p>
+        {% if not current_user.is_authenticated %}
+        <a href="{{ url_for('posts.login') }}" class="btn">GET STARTED</a>
+        {% else %}
+        <a href="{{ url_for('posts.post_list', userid=current_user.userid) }}" class="btn">Welcome {{ current_user.first_name }}</a>
+        {% endif %}
+      </header>
+
+      <div class="social">
+        <a href="#">
+          <i class="fab fa-twitter"></i>
+        </a>
+
+        <a href="git@github.com:Abstaina44/ALX-Portfolio-Project.git">
+          <i class="fab fa-github"></i>
+        </a>
+
+        <a href="#">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
     </div>
-</body>
+
+    <div class="mobile-menu-items">
+      <div class="close-button">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </div>
+
+      <ul class="menu-items">
+        <li>
+          <a href="#">sign up</a>
+        </li>
+
+        <li>
+          <a href="#">DASHBOARD</a>
+        </li>
+
+        <li>
+          <a href="#">About</a>
+        </li>
+
+        <li>
+          <a href="#">Contact</a>
+        </li>
+      </ul>
+    </div>
+
+    <script src="/static/scripts/main.js"></script>
+  </body>
 </html>

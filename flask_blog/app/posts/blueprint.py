@@ -37,7 +37,7 @@ def login_post():
         return redirect(url_for('posts.login'))
     else:
         login_user(user, remember=True)
-        return render_template('posts/page.html')
+        return redirect(url_for('index'))
 
 @posts.route('/signup')
 def signup():
@@ -121,7 +121,7 @@ def profile_post():
 @login_required
 def logout():
     logout_user()
-    return render_template("posts/page.html")
+    return redirect(url_for('index'))
 
 
 
@@ -252,6 +252,7 @@ def tag_details(slug, userid):
     return render_template('posts/tag_detail.html', tags=tags, pages=pages, i=i, user_=user_)
 
 @posts.route('/<slug>/<userid>/edit', methods=["POST", "GET"])
+@login_required
 def post_update(slug, userid):
     post = Post.query.filter(Post.slug==slug, Post.user_id==userid).first()
     taglist = []

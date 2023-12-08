@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #555;
+            padding: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>MyBlogText.com</h1>
+    </header>
+    
+    <nav>
+        {% if not current_user.is_authenticated %}
+        <a href="{{ url_for('posts.login') }}">Login</a>
+        {% endif %}
+        {% if current_user.is_authenticated %}
+        <a href="{{ url_for('posts.post_list', userid=current_user.userid) }}">Dashboard</a>
+        {% endif %}
+        {% if not current_user.is_authenticated %}
+        <a href="{{ url_for('posts.signup') }}">Signup</a>
+        {% endif %}
+        {% if current_user.is_authenticated %}
+        <a href="{{ url_for('posts.logout') }}">Logout</a>
+        {% endif %}
+    </nav>
+
+    <div>
+        <!-- Your page content goes here -->
+        <p>Welcome to Your Website!</p>
+    </div>
+</body>
+</html>

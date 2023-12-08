@@ -35,7 +35,11 @@
                   <div class="col-md-6">
                     <!-- First Name -->
                     <label for="first_name">First Name:</label>
+                    {% if current_user.first_name  %}
                     <input type="text" class="form-control" value="{{ current_user.first_name }}" name="first_name" id="first_name" placeholder="Enter first name" required>
+                 {% else %}
+                 <input type="text" class="form-control"  name="first_name" id="first_name" placeholder="Enter first name" required>
+                 {% endif %}
                   </div>
                   <div class="col-md-6">
                     <!-- Last Name -->
@@ -46,33 +50,63 @@
               </div>
               <div class="form-group">
                 <label for="instagram">About: </label>
+                {% if current_user.instagram  %}
                 <input type="text" maxlength="200" class="form-control" value="{{ current_user.instagram }}" name="instagram" id="instagram" placeholder="Bio">
-            </div>
+           {% else %}
+           <input type="text" maxlength="200" class="form-control" name="instagram" id="instagram" placeholder="Bio">
+           {% endif %}
+              </div>
             <div class="form-group">
                 <label for="website">Website url:</label>
-                <input type="text" class="form-control" value="{{ current_user.website }}" name="website" id="website" placeholder="Enter Website">
-            </div>
+            {% if current_user.website  %}
+              <input type="text" class="form-control" value="{{ current_user.website }}" name="website" id="website" placeholder="Enter Website">
+           {% else %}
+           <input type="text" class="form-control"  name="website" id="website" placeholder="Enter Website">
+           {% endif %}
+              </div>
             <div class="form-group">
                 <label for="github">Github url:</label>
+                {% if current_user.gitup  %}
                 <input type="text" class="form-control" value="{{ current_user.gitup }}" name="gitup" id="gitup" placeholder="Enter Github">
-            </div>
+            {% else %}
+            <input type="text" class="form-control"  name="gitup" id="gitup" placeholder="Enter Github">
+            {% endif %}
+              </div>
             <div class="form-group">
                 <label for="facebook">Facebook url:</label>
+                {% if current_user.facebook  %}
                 <input type="text" class="form-control" value="{{ current_user.facebook }}" name="facebook" id="facebook" placeholder="Enter facebook">
-            </div>
+            {% else %}
+            <input type="text" class="form-control"  name="facebook" id="facebook" placeholder="Enter facebook">
+
+            {% endif %}
+              </div>
             <div class="form-group">
                 <label for="linkedin">Linkedin url:</label>
-                <input type="text" class="form-control" value="{{ current_user.linkedin }}" name="linkedin" id="linkedin" placeholder="Enter Linkedin">
-            </div>
+              {% if current_user.linkedin  %}
+              <input type="text" class="form-control" value="{{ current_user.linkedin }}" name="linkedin" id="linkedin" placeholder="Enter Linkedin">
+            {% else %}
+            <input type="text" class="form-control"  name="linkedin" id="linkedin" placeholder="Enter Linkedin">
+            {% endif %}
+              </div>
             <div class="form-group">
                 <div class="row">
                   <div class="col-md-6">
                     <label for="youtube">youtube url:</label>
+                    {% if current_user.youtube  %}
                     <input type="text" class="form-control" value=" {{ current_user.youtube }} " name="youtube" id="youtube" placeholder="Enter youtube">
-                </div>
+               {% else %}
+               <input type="text" class="form-control"  name="youtube" id="youtube" placeholder="Enter youtube">
+               {% endif %}
+                  </div>
                   <div class="col-md-6">
                     <label for="twitter">twitter url:</label>
+                    {% if current_user.twitter  %}
                     <input type="text" class="form-control" value="{{ current_user.twitter }}" name="twitter" id="twitter" placeholder="Enter twitter">    
+                {% else %}
+                <input type="text" class="form-control"  name="twitter" id="twitter" placeholder="Enter twitter">    
+                {% endif %}
+                
                   </div>
                 </div>
               </div>
