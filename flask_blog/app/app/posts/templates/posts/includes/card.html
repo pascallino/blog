@@ -1,0 +1,49 @@
+<div class="col-sm-4 mb-3">
+    <div class="card mb-4">
+      <div class="card-header">
+        {{ post.created.strftime('%d %b %Y') }}
+        <div style="float: right;">
+          <a href="{{ url_for('posts.post_details', slug=post.slug) }}/edit"title="Edit Blog" >
+            <i class="fa-regular fa-pen-to-square"></i>
+        </a></div>
+      </div>
+      {% if post.filepath %}
+      <a href="{{ url_for('posts.post_details', slug=post.slug) }}"><img src="{{ url_for('static', filename=post.filepath) }}" class="card-img-top" style="object-fit: fill;" alt="...">
+      </a> 
+      {% else %}
+      <a href="{{ url_for('posts.post_details', slug=post.slug) }}"><img src="{{ url_for('static', filename='JPG-File.png') }}" class="card-img-top" style="object-fit: fill;" alt="...">
+      </a>
+        {% endif %}
+      <div class="card-body">
+        <a href="{{ url_for('posts.post_details', slug=post.slug) }}" > <h5 class="card-title">{{ post.title }}</h5></a>
+        <p class="card-text">{{ post.body | replace('\n', '<br>') | truncate(5, end='...') | safe }}</p>
+        <a href="{{ url_for('posts.post_details', slug=post.slug) }}" class="btn btn-light">Read more</a>
+              <a href="https://www.facebook.com/sharer/sharer.php?u=http://52.91.148.97:5003/2-hbnb" class="facebook">
+                  <i class="fab fa-facebook-f"></i>
+              </a>&nbsp;
+              <a href="#" class="instagram">
+                <i class="fab fa-instagram"></i>
+            </a>&nbsp;
+            <a href="#" class="twitter">
+              <i class="fab fa-twitter"></i>
+          </a>&nbsp; 
+          <a href="https://api.whatsapp.com/send?text=http://52.91.148.97:5003/2-hbnb" class="whatsapp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+         &nbsp;
+          <a href="#" class="linkedin">
+            <i class="fab fa-linkedin"></i>
+        </a>
+
+
+        <br>
+        {% if post.tags.count() %}
+        <div class="card-footer bg-transparent" style="border-top:none;">
+          {% for tag in post.tags %}
+          <a href=" {{ url_for('posts.tag_details', slug=tag.slug)}} "> <span class="badge text-bg-primary"> {{ tag.title }} </span></a>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+</div>

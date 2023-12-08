@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+
+{% block title %}
+    <h3>New Post</h3>
+{% endblock title %}
+
+{% block contents %}
+<h4> Create Post</h4>
+<hr>
+
+<form action="{{ url_for('posts.post_create') }}" method="POST" enctype="multipart/form-data">
+
+    <div class="amenities">
+        Select tag(s):
+        <h4> </h4>
+        <div class="popover">
+          <ul>
+            {% for tag in tags %}
+            {% if tag.title %}
+            <li> <input type="checkbox" name="mycheckbox" value="{{ tag.title }}" data-id="{{ tag.id }}" data-name="{{ tag.title }}">
+              {{ tag.title }}
+                </li>
+                {% endif%}
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <br>
+    {% for field in form %}
+    <div class="form-group">
+   {{ field.label(style="font-size: 20px") }}
+   {% if field.type == 'TextAreaField' %}
+   {{ field(class='form-control', style="height: 300px") }}
+   {% else %}
+   {{ field(class='form-control') }}
+   {% endif %}
+   <br>
+    </div>
+    {% endfor %}
+    <script>
+        CKEDITOR.replace( 'body' );
+    </script>
+    <button class="btn btn-primary">submit</button>
+</form>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/tags.css') }}">
+<script src="/static/scripts/tags.js"></script>
+{% endblock contents %}

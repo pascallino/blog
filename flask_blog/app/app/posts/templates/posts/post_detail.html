@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    {{ postdetail.title }}
+{% endblock title %}
+
+
+{% block contents %}
+<div class="user-profile">
+    <div class="profile-image">
+        <img class="rounded-image" src="/static/JPG-File.png" alt="Rounded Image">
+    </div>
+    <div class="profile-details">
+        <h5> John Doe</h5>
+        <p>Email: john.doe@example.com<br>
+        Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+  </div>
+  <br>
+<div style="text-align: center;">
+    <h4>{{ postdetail.title }}</h4>
+    {% if postdetail.created %} 
+ Created: {{  postdetail.created.strftime('%B %d, %Y') }}
+    {% endif %}  
+
+</div>
+<hr>
+<div  style="display: flex; justify-content: center; align-items: center;">
+<div class="col-sm-12">
+        <div class="card ">
+            {% if postdetail.filepath %}
+<img src="{{ url_for('static', filename=postdetail.filepath) }}" class="card-img-top" style="width: 850px; 
+height: 300px; object-fit: fill;" alt="...">
+{% else %}
+<img src="{{ url_for('static', filename='JPG-File.png') }}" class="card-img-top" style="width: 850px; 
+height: 300px; object-fit: fill;" alt="...">
+{% endif %}
+        </div>
+        </div>
+        </div>
+<br>
+
+<div class="">
+ <span style="font-size: 20px;">{{ postdetail.body | safe }}</span>
+</div>
+    
+{% endblock contents %}
+    

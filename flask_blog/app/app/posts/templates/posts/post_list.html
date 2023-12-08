@@ -1,0 +1,85 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Post contents
+{% endblock title %}
+
+{% block contents %}
+<!-- {% if pages.items %}
+<h4>{{ current_user.first_name }} Blog(s)</h4>
+{% else %}
+<h4> {{ current_user.first_name }} you have no Blog(s) </h4>
+{% endif %} -->
+<div class="user-profile">
+  <div class="profile-image">
+      <img class="rounded-image" src="/static/JPG-File.png" alt="Rounded Image">
+  </div>
+  <div class="profile-details">
+      <h5> {{current_user.first_name }} {{current_user.last_name }} </h5>
+      <p>Email: {{ current_user.email }}<br>
+      Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <div class="link-container">
+      <a href="#" title="facebook account" class="facebook">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="#" title="instagram account" class="instagram">
+      <i class="fab fa-instagram"></i>
+  </a>
+  <a href="#" title="twitter" class="twitter">
+    <i class="fab fa-twitter"></i>
+</a>
+<a href="#" title="linkedin account" class="linkedin">
+  <i class="fab fa-linkedin"></i>
+</a>
+<a href="#" title="gitup account" class="gitup">
+  <i class="fab fa-github"></i>
+</a>
+<a href="#" title="youtube account" class="youtube">
+  <i class="fab fa-youtube"></i>
+</a>
+<a href="#" title="website" class="website">
+  <i class="fas fa-globe"></i>
+</a>
+</div>
+
+    </div>
+</div>
+
+<hr>
+{% set i = 0 %}
+  <div class="row">
+    {% for post in pages.items %}
+    {% include 'posts/includes/card.html' %}
+    {% endfor %}
+    {% if i % 3 == 2 %}
+  </div>
+  <div class="row">
+  {% endif %}
+  {% set i = i + 1 %}
+  </div>
+
+
+  <nav aria-label="...">
+    <ul class="pagination">
+      <li class="page-item {% if not pages.has_prev %} disabled {% endif %}">
+        <a class="page-link" href="./?page={{ pages.prev_num }}">Previous</a>
+      </li>
+
+<!--       <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item active">
+        <a class="page-link" href="#">2</a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+
+      {% for page in pages.iter_pages() %}
+      <li class="page-item {% if page == pages.page %} active {% endif %}">
+        <a class="page-link" href="./?page={{ page }}">{{ page }}</a>
+      </li>
+      {% endfor%}
+
+      <li class="page-item {% if not pages.has_next %} disabled {% endif %}">
+        <a class="page-link" href="./?page={{ pages.next_num }}">Next</a>
+      </li>
+    </ul>
+  </nav>
+{% endblock contents %}

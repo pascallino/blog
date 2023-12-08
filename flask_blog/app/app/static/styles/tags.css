@@ -1,0 +1,73 @@
+.amenities {
+    height: 100%;
+    width: 25%;
+}
+
+.popover {
+    visibility:visible;
+    width: 100%;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    background: #FAFAFA;
+    padding-bottom: 15px;
+    height: 100px;
+    overflow-y: auto; /* Use 'auto' to show scrollbar only when needed */
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: #DDDDDD transparent; /* For Firefox */
+    max-height: 300px;
+}
+
+/* For WebKit browsers like Chrome and Safari */
+.popover::-webkit-scrollbar {
+    width: 12px; /* Adjust as needed */
+}
+
+.popover::-webkit-scrollbar-thumb {
+    background-color: #DDDDDD; /* Adjust as needed */
+}
+
+.popover::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+
+.amenities .popover {
+    padding: 10px 0;
+    margin-left: -5px;
+    margin-top: -5px;
+}
+
+.state_input, .city_input {
+    margin-right: 10px;
+}
+
+.amenities .popover ul li input {
+    margin: 0 10px;
+}
+
+.amenities .popover ul{
+    margin: 0px;
+}
+
+.popover {
+    margin-top: -5px;
+}
+.popover ul {
+    list-style-type: none;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+.popover ul li{
+    padding: 4px;
+    padding-left: 10px;
+}
+
+.popover ul h2{
+    margin-top: 1.5%;
+    margin-bottom: 5%;
+    margin-left: 0px;
+}
+
+.amenities:hover .popover{
+    visibility: visible;
+}

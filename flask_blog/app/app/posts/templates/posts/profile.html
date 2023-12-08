@@ -1,0 +1,86 @@
+{% extends 'layout.html' %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    {% block contents %}
+    <h3> Edit profile details</h3>
+    Blog url: {{ current_user.userid }}
+    <div class="signup-container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class="alert alert-danger custom-alert hidden">
+            {{ messages[0] }}
+        </div>
+        {% endif %}
+        {% endwith%}
+        <hr>
+        <form action="{{url_for('posts.signup_post')}}" method="POST" >
+            <div class="form-group">
+                <img src="{{ url_for('static', filename='JPG-File.png') }}" class="card-img-top" style="object-fit: fill; height: 50px; width: 50px;" alt="...">
+                <label for="imageupload"></label>
+                <input type="file" class="form-control-file" id="imageupload" accept="image/*">
+            </div>
+<!--             <div class="form-group">
+                <label for="email">Email address:</label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="Enter email" required>
+            </div> -->
+<!--             <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="Enter password" required>
+            </div> -->
+            <div class="form-group">
+                <div class="row">
+                  <div class="col-md-6">
+                    <!-- First Name -->
+                    <label for="first_name">First Name:</label>
+                    <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Enter first name" required>
+                  </div>
+                  <div class="col-md-6">
+                    <!-- Last Name -->
+                    <label for="last_name">Last Name:</label>
+                    <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Enter last name" required>
+                  </div>
+                </div>
+              </div>
+            <div class="form-group">
+                <label for="website">Website url:</label>
+                <input type="text" class="form-control" name="website" id="website" placeholder="Enter Website">
+            </div>
+            <div class="form-group">
+                <label for="github">Github url:</label>
+                <input type="text" class="form-control" name="gitup" id="gitup" placeholder="Enter Github">
+            </div>
+            <div class="form-group">
+                <label for="instagram">Instagram url:</label>
+                <input type="text" class="form-control" name="instagram" id="instagram" placeholder="Enter instagram">
+            </div>
+            <div class="form-group">
+                <label for="facebook">Facebook url:</label>
+                <input type="text" class="form-control" name="facebook" id="facebook" placeholder="Enter facebook">
+            </div>
+            <div class="form-group">
+                <label for="linkedin">Linkedin url:</label>
+                <input type="text" class="form-control" name="linkedin" id="linkedin" placeholder="Enter Linkedin">
+            </div>
+            <div class="form-group">
+                <div class="row">
+                  <div class="col-md-6">
+                    <label for="youtube">youtube url:</label>
+                    <input type="text" class="form-control" name="youtube" id="youtube" placeholder="Enter youtube">
+                </div>
+                  <div class="col-md-6">
+                    <label for="twitter">twitter url:</label>
+                    <input type="text" class="form-control" name="twitter" id="twitter" placeholder="Enter twitter">    
+                  </div>
+                </div>
+              </div>
+            <br>
+            <button type="submit" class="btn btn-primary btn-block">Save my information</button>
+        </form>
+    </div>
+
+    <!-- Include Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    {% endblock contents %}

@@ -1,0 +1,24 @@
+.user-profile {
+    display: flex;
+    align-items: center;
+}
+
+.profile-image {
+    margin-right: 20px;
+}
+
+.rounded-image {
+    border-radius: 50%;
+    width: 70px; /* Adjust the width as needed */
+    height: 70px; /* Adjust the height as needed */
+    object-fit: cover;
+}
+
+.profile-details {
+    max-width: 700px; /* Adjust the max-width as needed */
+}
+.link-container {
+    display: flex;
+    gap: 20px; /* Adjust the space between links as needed */
+  }
+ 
