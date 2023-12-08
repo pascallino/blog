@@ -13,6 +13,12 @@
     height: 70px; /* Adjust the height as needed */
     object-fit: cover;
 }
+.rounded-image2 {
+    border-radius: 50%;
+    width: 35px; /* Adjust the width as needed */
+    height: 35px; /* Adjust the height as needed */
+    object-fit: cover;
+}
 
 .profile-details {
     max-width: 700px; /* Adjust the max-width as needed */
@@ -21,4 +27,19 @@
     display: flex;
     gap: 20px; /* Adjust the space between links as needed */
   }
+
+  .view-more-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #333; /* Adjusted text color */
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 2px solid #fff;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.view-more-btn:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+}
  

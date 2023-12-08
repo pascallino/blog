@@ -66,16 +66,57 @@ def signup_post():
 def dashboard(userid):
     return redirect(url_for("posts.authenticated", userid=userid))
 
-@posts.route('/profile/<userid>/')
+@posts.route('/profile/<userid>')
 @login_required
 def profile(userid):
-    return render_template("posts/profile.html")
+    return render_template("posts/profile.html", userid=userid)
 
 @posts.route('/profile/', methods=['POST'])
 @login_required
 def profile_post():
-    pass
-
+    filepath = None
+    image = None
+    taglist = []
+    t_ = None
+    p_ = None
+    if request.method == 'POST':
+        user = User.query.filter_by(userid=current_user.userid).first()
+        first_name = request.form.get('first_name')
+        last_name = request.form.get('last_name')
+        About = request.form.get('instagram')
+        website = request.form.get('website')
+        gitup = request.form.get('gitup')
+        facebook = request.form.get('facebook')
+        linkedin = request.form.get('linkedin')
+        youtube = request.form.get('youtube')
+        twitter = request.form.get('twitter')
+        try:
+            image = request.files['filepath']
+        except:
+            image = None
+        if image != None  and allowed_file(image.filename):
+            if user.filepath:
+                if os.path.exists(os.path.join(app.config['UPLOAD_FOLDER'] + '/static/', user.filepath )):
+                    os.remove(os.path.join(app.config['UPLOAD_FOLDER'] + '/static/', user.filepath))
+            filename = secure_filename(image.filename)
+            image.save(os.path.join(app.config['UPLOAD_FOLDER'] + '/static/', 'userblog_' + filename))
+            filepath = 'userblog_' + filename
+        user.filepath = user.filepath
+        if filepath:
+            user.filepath = filepath
+        user.first_name = first_name
+        user.last_name = last_name
+        user.instagram = About
+        user.website = website
+        user.gitup = gitup
+        user.facebook = facebook
+        user.linkedin = linkedin
+        user.youtube = youtube
+        user.twitter = twitter
+        db.session.commit()
+        flash('Record updated successfully')
+        return redirect(url_for("posts.profile", userid=current_user.userid))
+    
 @posts.route('/logout')
 @login_required
 def logout():
@@ -137,24 +178,21 @@ def post_create():
     return render_template('posts/post_create.html', form=form, tags=tags)
 
 
-@posts.route('/')
-@login_required
-def post_list():
+@posts.route('/<userid>/')
+def post_list(userid):
     user = None
     if current_user.is_authenticated:
         user = User.query.filter_by(email=current_user.email).first()
+    user_ = User.query.filter_by(userid=userid).first()
     i = 0
     q = request.args.get('q')
     if q:
         postlist = Post.query.filter(or_(Post.title.contains(q), Post.body.contains(q)),
-                                     Post.user_id == current_user.userid)
+                                     Post.user_id == userid)
 # postlist = Post.query.filter(Post.title.contains(q) |
                                   #   Post.body.contains(q)) """
     else:
-        postlist = Post.query.filter_by(user_id=current_user.userid).order_by(Post.created.desc())
-
-    
-    print(postlist)
+        postlist = Post.query.filter_by(user_id=userid).order_by(Post.created.desc())
     
     page = request.args.get("page")
     #localhost:5000/blog?page=7478
@@ -173,24 +211,49 @@ def post_list():
         pages = postlist.paginate(page=count, per_page=3)
 
     
-    return render_template('posts/post_list.html', postlist=postlist, i=i, pages=pages)
+    return render_template('posts/post_list.html', postlist=postlist, i=i, pages=pages, user_=user_)
 
 #route to specific post details
-@posts.route('/<slug>/', methods=['GET'])
-def post_details(slug):
-    postdetail = Post.query.filter(Post.slug==slug).first()
-    return render_template('posts/post_detail.html', postdetail=postdetail)
+@posts.route('/<slug>/<userid>', methods=['GET'])
+def post_details(slug, userid):
+    postdetail = Post.query.filter(Post.slug==slug, Post.user_id==userid).first()
+    user_ = User.query.filter_by(userid=userid).first()
+    return render_template('posts/post_detail.html', postdetail=postdetail, user_=user_)
 
 #route to specific post details
-@posts.route('tags/<slug>')
-def tag_details(slug):
+@posts.route('tags/<slug>/<userid>')
+def tag_details(slug, userid):
     i = 0
     tags = Tag.query.filter(Tag.slug==slug).first()
-    return render_template('posts/tag_detail.html', tags=tags, i=i)
+    page = request.args.get("page")
+    q = request.args.get('q')
+    if q:
+        postlist = Post.query.join(Post.tags).filter_by(slug=slug).filter(
+            (Post.title.contains(q)) | (Post.body.contains(q))
+        )
+    else:
+        postlist = Post.query.join(Post.tags).filter_by(slug=slug)
+    
+    if page and page.isdigit():
+        page = int(page)
+    else:
+        page = 1
+    try:
+        pages = postlist.paginate(page=page, per_page=3)
+    except:
+        if (postlist.count() % 3 != 0):
+            count =  int((postlist.count() / 3)) + 1
+        else:
+            count = (postlist.count() / 3)
 
-@posts.route('/<slug>/edit', methods=["POST", "GET"])
-def post_update(slug):
-    post = Post.query.filter(Post.slug==slug).first()
+        pages = postlist.paginate(page=count, per_page=3)
+    
+    user_ = User.query.filter_by(userid=userid).first()
+    return render_template('posts/tag_detail.html', tags=tags, pages=pages, i=i, user_=user_)
+
+@posts.route('/<slug>/<userid>/edit', methods=["POST", "GET"])
+def post_update(slug, userid):
+    post = Post.query.filter(Post.slug==slug, Post.user_id==userid).first()
     taglist = []
     if request.method == 'POST':
         form = PostForm(formdata=request.form, obj=post)

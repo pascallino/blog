@@ -12,32 +12,34 @@
 {% endif %} -->
 <div class="user-profile">
   <div class="profile-image">
-      <img class="rounded-image" src="/static/JPG-File.png" alt="Rounded Image">
-  </div>
+{% if user_.filepath %}
+      <img class="rounded-image" src="{{ url_for('static', filename=user_.filepath) }}" alt="Rounded Image">
+ {% else %}
+ <img class="rounded-image" src=" {{ url_for('static', filename='JPG-File.png') }}"  alt="Rounded Image">
+{% endif %}
+    </div>
   <div class="profile-details">
-      <h5> {{current_user.first_name }} {{current_user.last_name }} </h5>
-      <p>Email: {{ current_user.email }}<br>
-      Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    
+      <h5> {{user_.first_name }} {{user_.last_name }} </h5>
+      <p> {{ user_.email }}<br>
+      {{ user_.instagram }}</p>
       <div class="link-container">
-      <a href="#" title="facebook account" class="facebook">
+      <a href="{{ user_.facebook }}" title="facebook account" class="facebook">
         <i class="fab fa-facebook-f"></i>
     </a>
-    <a href="#" title="instagram account" class="instagram">
-      <i class="fab fa-instagram"></i>
-  </a>
-  <a href="#" title="twitter" class="twitter">
+  <a href="{{ user_.twitter }}" title="twitter" class="twitter">
     <i class="fab fa-twitter"></i>
 </a>
-<a href="#" title="linkedin account" class="linkedin">
+<a href="{{ user_.linkedin }}" title="linkedin account" class="linkedin">
   <i class="fab fa-linkedin"></i>
 </a>
-<a href="#" title="gitup account" class="gitup">
+<a href="{{ user_.gitup }}" title="gitup account" class="gitup">
   <i class="fab fa-github"></i>
 </a>
-<a href="#" title="youtube account" class="youtube">
+<a href="{{ user_.youtube }}" title="youtube account" class="youtube">
   <i class="fab fa-youtube"></i>
 </a>
-<a href="#" title="website" class="website">
+<a href="{{ user_.website }}" title="website" class="website">
   <i class="fas fa-globe"></i>
 </a>
 </div>

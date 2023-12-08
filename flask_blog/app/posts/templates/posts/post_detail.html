@@ -8,12 +8,14 @@
 {% block contents %}
 <div class="user-profile">
     <div class="profile-image">
-        <img class="rounded-image" src="/static/JPG-File.png" alt="Rounded Image">
+        <a href="{{ url_for('posts.post_list', userid=postdetail.user_id) }}"><img class="rounded-image" src="{{ url_for('static', filename=user_.filepath) }}" alt="Rounded Image">
+            </a>
     </div>
     <div class="profile-details">
-        <h5> John Doe</h5>
-        <p>Email: john.doe@example.com<br>
-        Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <h5> {{ user_.first_name }} {{ user_.last_name}}</h5>
+        <p>{{ user_.email }}<br>
+        {{ user_.instagram }}</p>
+        <a href="{{ url_for('posts.post_list', userid=postdetail.user_id) }}" class="btn btn-secondary btn-sm">Back to Home</a>
     </div>
   </div>
   <br>
