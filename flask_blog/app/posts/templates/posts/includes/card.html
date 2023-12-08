@@ -6,7 +6,12 @@
         <div style="float: right;">
           <a href="{{ url_for('posts.post_details', slug=post.slug, userid=post.user_id) }}/edit"title="Edit Blog" >
             <i class="fa-regular fa-pen-to-square"></i>
-        </a></div>
+        </a>
+        &nbsp;&nbsp;
+        <a href="{{ url_for('posts.post_delete', postid=post.postid) }}">
+          <i class="fa-solid fa-trash-can"></i>
+        </a>
+      </div>
         {% endif %}
       </div>
       {% if post.filepath %}

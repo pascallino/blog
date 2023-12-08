@@ -126,7 +126,14 @@ def logout():
 
 
 
-
+@posts.route('/<postid>/delete')
+def post_delete(postid):
+    post = Post.query.filter_by(postid=postid).first()
+    if post:
+        db.session.delete(post)
+        db.session.commit()
+    return redirect(url_for('posts.post_list', userid=current_user.userid))
+    
 
 
 
@@ -173,7 +180,7 @@ def post_create():
                 user.posts.append(post)
         db.session.commit()
                 
-        return redirect(url_for('posts.post_list'))
+        return redirect(url_for('posts.post_list', userid=current_user.userid))
     tags = Tag.query.all()
     return render_template('posts/post_create.html', form=form, tags=tags)
 
@@ -291,7 +298,7 @@ def post_update(slug, userid):
                 t_ = Tag.query.filter_by(title=tag).first()
                 post.tags.append(t_)
         db.session.commit()
-        return redirect(url_for("posts.post_details", slug=post.slug))
+        return redirect(url_for("posts.post_details", slug=post.slug, userid=current_user.userid))
     form = PostForm(obj=post)
     form.filepath.data = post.filepath
     tags = Tag.query.all()
