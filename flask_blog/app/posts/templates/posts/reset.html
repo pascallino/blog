@@ -32,14 +32,14 @@
         </div>
         {% else %}
         <div class="alert alert-primary custom-alert">
-            Please login to access the main page
+           Password Reset
         </div>
         {% endif %}
         {% endwith%}
 
         <h2 class="text-center">MyBlogText</h2>
         <hr>
-        <form action="{{url_for('posts.login_post')}}" method="POST" >
+        <form action="{{url_for('posts.reset_post')}}" method="POST" >
             <div class="form-group">
                 <label for="email">Email address:</label>
                 <input type="email" class="form-control" name="email" id="email" placeholder="Enter email" required>
@@ -48,18 +48,17 @@
                 <label for="password">Password:</label>
                 <input type="password" class="form-control" name="password" id="password" placeholder="Enter password" required>
             </div>
-
             <div class="form-group">
-                <label for="remember">
-                    <input type="checkbox" name="remember" id="remember"/>
-                    Remember me</label>
+                <label for="confirmpassword">Confirm password:</label>
+                <input type="password" class="form-control" name="confirmpassword" id="confirmpassword" placeholder="Re-Enter password" required>
+            </div>
+            <div class="form-group">
                </div><div  style="float: left;">
                     <a href="{{ url_for('index') }}" class="btn btn-light btn-sm">Back to Home</a>
+
                 </div> 
 <div  style="text-align: right;"">
-            <button type="submit"  class="btn btn-primary">Login</button>
-            <a href="{{ url_for('posts.reset') }}" class="btn btn-light btn-sm">forgot password</a>
-        </div> 
+            <button type="submit"  class="btn btn-primary">Reset</button></div> 
         </form>
     </div>
 

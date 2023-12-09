@@ -3,7 +3,8 @@
 
     {% block contents %}
     <h3> Profile section</h3>
-    Share Blog url: http://localhost:5000/blog/{{ current_user.userid }}/
+    Share profile url => <input type="text" readonly style="width: 530px;" id="textToCopy" value="http://52.91.148.97:5005/blog/{{ current_user.userid }}/">
+    <button id="copybtn" onclick="copyText()">Copy</button>
     <div class="signup-container">
         {% with messages = get_flashed_messages() %}
         {% if messages %}
@@ -122,14 +123,21 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
-      $(document).ready(function () {
-          // Show the alert
-          $('#myAlert').fadeIn();
-  
-          // Set a timeout to fade out the alert after 5 seconds
-          setTimeout(function () {
-              $('#myAlert').fadeOut('slow'); // Use 'slow' for a gradual fade-out effect
-          }, 5000);
-      });
+     
+      function copyText() {
+        /* Get the text field */
+        var copyText = document.getElementById("textToCopy");
+
+        /* Select the text field */
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+        /* Copy the text inside the text field */
+        document.execCommand("copy");
+
+        /* Change the button text to indicate it's copied */
+        var copyButton = document.getElementById("copybtn");
+        copyButton.innerHTML = "Copied!";
+    }
   </script>
     {% endblock contents %}

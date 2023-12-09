@@ -133,8 +133,28 @@ def post_delete(postid):
         db.session.delete(post)
         db.session.commit()
     return redirect(url_for('posts.post_list', userid=current_user.userid))
-    
 
+@posts.route('/reset', methods=['GET'])
+def reset():
+    return render_template("posts/reset.html")
+
+@posts.route('/reset', methods=['POST'])
+def reset_post():
+    email = request.form.get('email')
+    password = request.form.get('password')
+    confirmpassword = request.form.get('confirmpassword')
+    user = User.query.filter_by(email=email).first()
+    if not user:
+        flash("User doesnt exist!!")
+        return redirect(url_for('posts.reset'))
+    if password != confirmpassword:
+        flash("Password doesnt match!!")
+        return redirect(url_for('posts.reset'))
+    if user:
+        user.password = password
+        db.session.commit()
+        logout_user()
+    return redirect(url_for('posts.login'))
 
 
 

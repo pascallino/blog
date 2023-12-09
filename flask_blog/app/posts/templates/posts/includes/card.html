@@ -8,8 +8,9 @@
             <i class="fa-regular fa-pen-to-square"></i>
         </a>
         &nbsp;&nbsp;
-        <a href="{{ url_for('posts.post_delete', postid=post.postid) }}">
-          <i class="fa-solid fa-trash-can"></i>
+        <!-- <a href="{{ url_for('posts.post_delete', postid=post.postid) }}/delete"> -->
+          <a href="#" onclick="return confirmDelete('{{ url_for('posts.post_delete', postid=post.postid) }}')"><i class="fa-solid fa-trash-can"></i></a>
+          <!-- <i class="fa-solid fa-trash-can"></i> -->
         </a>
       </div>
         {% endif %}
@@ -31,7 +32,7 @@
               <!-- <a href="#" class="instagram">
                 <i class="fab fa-instagram"></i>
             </a>&nbsp; -->
-            <a href="#" class="twitter">
+            <a href="https://twitter.com/intent/tweet?url=http://52.91.148.97:5005/blog/{{ post.slug }}/{{ post.user_id }}&text={{ post.title }}" class="twitter">
               <i class="fab fa-twitter"></i>
           </a>&nbsp; 
           <a href="https://api.whatsapp.com/send?text=http://52.91.148.97:5005/blog/{{ post.slug }}/{{ post.user_id }}" class="whatsapp">

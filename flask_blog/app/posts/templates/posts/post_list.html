@@ -84,4 +84,12 @@
       </li>
     </ul>
   </nav>
+  <script>
+    function confirmDelete(url) {
+        if (confirm('Are you sure you want to delete this post?')) {
+            window.location.href = url;
+        }
+        return false; // Prevent the default link behavior
+    }
+    </script>
 {% endblock contents %}
