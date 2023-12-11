@@ -2,7 +2,7 @@
     <div class="card mb-4">
       <div class="card-header">
         {{ post.created.strftime('%d %b %Y') }}
-        {% if current_user.is_authenticated %}
+        {% if current_user.is_authenticated and current_user.userid ==  post.user_id %}
         <div style="float: right;">
           <a href="{{ url_for('posts.post_details', slug=post.slug, userid=post.user_id) }}/edit"title="Edit Blog" >
             <i class="fa-regular fa-pen-to-square"></i>

@@ -107,9 +107,13 @@
         to express your thoughts, share your stories, and connect with a global audience. Whether you're a seasoned writer or
         just starting your writing journey, MyblogText provides the perfect space to showcase your creativity</p>
 <br>
-        <p>
-          Click below.
-        </p>
+{% if not current_user.is_authenticated %}
+<p>
+  Click below.
+</p>
+{% else %}
+<p> Go to your Dashboard!!  </p>
+{% endif %}
         {% if not current_user.is_authenticated %}
         <a href="{{ url_for('posts.login') }}" class="btn">GET STARTED</a>
         {% else %}
