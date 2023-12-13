@@ -1,6 +1,7 @@
 # MY BLOG TEXT
 
-# Features
+##  Features
+##  Contributions
 
 This is an ALX-Project BlogText Landing Page.
 
