@@ -6,11 +6,7 @@
 
 ##  Contributions 
 
-<<<<<<< HEAD
 ##  License
-=======
-##  License 
->>>>>>> 986823cc77c2e3b12ff547becc3a5fe8fe765e94
 
 All contributions are welcome.
 
