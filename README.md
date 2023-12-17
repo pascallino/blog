@@ -4,9 +4,11 @@
 
 ##  Features
 
-##  Contributions
+##  Contributions 
 
+##  License
 
+All contributions are welcome.
 
 This is an ALX-Project BlogText Landing Page.
 
