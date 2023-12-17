@@ -6,6 +6,7 @@
 
 ##  Contributions
 
+##  License 
 
 
 This is an ALX-Project BlogText Landing Page.
