@@ -1,0 +1,5 @@
+_pycache__
+ .idea
+ .vagrant
+ *.pyc
+ .vscode
