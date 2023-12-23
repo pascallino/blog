@@ -26,20 +26,20 @@
         <a href="{{ url_for('posts.post_details', slug=post.slug, userid=post.user_id) }}" > <h5 class="card-title">{{ post.title }}</h5></a>
         <p class="card-text">{{ post.body | replace('\n', '<br>') | truncate(5, end='...') | safe }}</p>
         <a href="{{ url_for('posts.post_details', slug=post.slug, userid=post.user_id) }}" class="btn btn-light">Read more</a>
-              <a href="https://www.facebook.com/sharer/sharer.php?u=http://52.91.148.97:5005/blog/{{ post.slug }}/{{ post.user_id}}" class="facebook">
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://blog.mystockcompanion.tech/blog/{{ post.slug }}/{{ post.user_id}}" class="facebook">
                   <i class="fab fa-facebook-f"></i>
               </a>&nbsp;
               <!-- <a href="#" class="instagram">
                 <i class="fab fa-instagram"></i>
             </a>&nbsp; -->
-            <a href="https://twitter.com/intent/tweet?url=http://52.91.148.97:5005/blog/{{ post.slug }}/{{ post.user_id }}&text={{ post.title }}" class="twitter">
+            <a href="https://twitter.com/intent/tweet?url=https://blog.mystockcompanion.tech/blog/{{ post.slug }}/{{ post.user_id }}&text={{ post.title }}" class="twitter">
               <i class="fab fa-twitter"></i>
           </a>&nbsp; 
-          <a href="https://api.whatsapp.com/send?text=http://52.91.148.97:5005/blog/{{ post.slug }}/{{ post.user_id }}" class="whatsapp">
+          <a href="https://api.whatsapp.com/send?text=https://blog.mystockcompanion.tech/blog/{{ post.slug }}/{{ post.user_id }}" class="whatsapp">
             <i class="fab fa-whatsapp"></i>
         </a>
          &nbsp;
-          <a href="https://www.linkedin.com/sharing/share-offsite/?url=http://52.91.148.97:5005/blog/{{ post.slug }}/{{ post.user_id }}" class="linkedin">
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://blog.mystockcompanion.tech/blog/{{ post.slug }}/{{ post.user_id }}" class="linkedin">
             <i class="fab fa-linkedin"></i>
         </a>
 
