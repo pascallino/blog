@@ -70,11 +70,11 @@ Submit a pull request.
 
 ##  Authors 
 
+##  Visit our [GitHub][github] 
+
  https://github.com/Abstaina44
 
  https://github.com/pascallino
-
-##   Visit our [GitHub][github] 
 
 [Github]: [Ephraim]https://github.com/Abstaina44
 
