@@ -69,6 +69,11 @@ Submit a pull request.
 ##  License - MIT 
 
 ##  Authors 
+
+ https://github.com/Abstaina44
+
+ https://github.com/pascallino
+
 ##   Visit our [GitHub][github] 
 
 [Github]: [Ephraim]https://github.com/Abstaina44
