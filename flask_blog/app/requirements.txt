@@ -26,7 +26,6 @@ itsdangerous
 Jinja2
 Mako
 MarkupSafe
-mysqlclient
 passlib
 PyJWT
 pytz
