@@ -8,7 +8,7 @@ from flask_cors import CORS
 
 
 app.register_blueprint(posts, url_prefix='/blog')
-app.register_blueprint(app_views)
+# app.register_blueprint(app_views)
 # cors = CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 
 

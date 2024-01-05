@@ -6,9 +6,7 @@ from flask_jwt_extended import JWTManager, create_access_token, jwt_required, ge
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 from datetime import datetime, timedelta
-from flask_security import SQLAlchemyUserDatastore
 from flask_babel import Babel
-from flask_security import Security
 from flask_login import LoginManager
 import os
 
